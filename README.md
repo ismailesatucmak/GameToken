@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # GameToken Creator Market Smart Contract
 
 A Rust-based smart contract for Gaming Asset (GameToken) tokenization on the Stellar blockchain. This contract enables game studios, developers, and eSports organizations to tokenize their projects, in-game assets, and teams while ensuring regulatory compliance and professional asset management.
@@ -305,3 +306,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with Soroban for the Future of Gaming Asset Tokenization**
 
 ⚡ Powered by Nova Games Collective | Last Updated: June 2025
+=======
+# noNameCoin
+>>>>>>> origin/main
