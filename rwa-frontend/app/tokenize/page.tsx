@@ -10,8 +10,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { 
-  Building2, 
-  FileText, 
+  Gamepad2, 
+  Trophy,
+  Sword,
   Shield, 
   Clock,
   Check,
@@ -21,7 +22,6 @@ import {
   AlertCircle,
   DollarSign,
   Users,
-  Briefcase,
   Coins,
   Calculator,
   Info
@@ -32,67 +32,68 @@ import { Progress } from '@/components/ui/progress';
 
 const ASSET_TYPES = [
   {
-    id: 'real_estate',
-    name: 'Real Estate',
-    description: 'Residential, commercial, or industrial properties',
-    icon: Building2,
-    minValue: 100000,
-    examples: ['Apartment buildings', 'Office complexes', 'Warehouses', 'Retail spaces']
-  },
-  {
-    id: 'commodities',
-    name: 'Commodities',
-    description: 'Physical goods and precious metals',
-    icon: Coins,
+    id: 'game_project',
+    name: 'Game Project',
+    description: 'Gaming studios and development projects',
+    icon: Gamepad2,
     minValue: 50000,
-    examples: ['Gold storage', 'Oil reserves', 'Agricultural products', 'Rare metals']
+    examples: ['MMORPGs', 'Mobile Games', 'VR Experiences', 'Indie Games']
   },
   {
-    id: 'infrastructure',
-    name: 'Infrastructure',
-    description: 'Energy, transportation, and utility projects',
-    icon: Briefcase,
-    minValue: 500000,
-    examples: ['Solar farms', 'Wind turbines', 'Data centers', 'Transportation hubs']
+    id: 'esports_team',
+    name: 'eSports Team',
+    description: 'Professional gaming teams and organizations',
+    icon: Trophy,
+    minValue: 100000,
+    examples: ['Pro Teams', 'Tournament Slots', 'Training Facilities', 'Brand Rights']
+  },
+  {
+    id: 'in_game_assets',
+    name: 'In-Game Assets',
+    description: 'Virtual items, skins, and collectibles',
+    icon: Sword,
+    minValue: 10000,
+    examples: ['Rare Items', 'Character Skins', 'Virtual Land', 'Game Currencies']
   }
 ];
 
 const TOKENIZATION_STEPS = [
   {
     id: 1,
-    title: 'Asset Details',
-    description: 'Provide basic information about your asset'
+    title: 'Game Details',
+    description: 'Provide basic information about your gaming project'
   },
   {
     id: 2,
-    title: 'Legal Documentation',
-    description: 'Upload required legal and ownership documents'
+    title: 'Technical Documentation',
+    description: 'Upload game design documents and technical specs'
   },
   {
     id: 3,
-    title: 'Tokenization Structure',
-    description: 'Define token economics and distribution'
+    title: 'Gaming Economy',
+    description: 'Define token distribution and player incentives'
   },
   {
     id: 4,
-    title: 'Compliance Setup',
-    description: 'Configure investor requirements and restrictions'
+    title: 'Community Setup',
+    description: 'Configure community features and engagement plans'
   },
   {
     id: 5,
-    title: 'Review & Deploy',
-    description: 'Review all details and deploy your token'
+    title: 'Launch Strategy',
+    description: 'Review marketing plan and deploy your token'
   }
 ];
 
 export default function TokenizePage() {
   const { isConnected, address } = useWalletStore();
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
-    // Step 1: Asset Details
+  const [currentStep, setCurrentStep] = useState(1);  const [formData, setFormData] = useState({
+    // Step 1: Game Details
     assetType: '',
-    assetName: '',
-    location: '',
+    projectName: '',
+    studio: '',
+    genre: '',
+    platform: '',
     description: '',
     totalValue: '',
     
@@ -240,13 +241,12 @@ export default function TokenizePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <FileText className="h-5 w-5" />
-                    Ownership Proof
+                <CardHeader>                <CardTitle className="flex items-center gap-2">
+                    <Trophy className="h-5 w-5" />
+                    Game Design Document
                   </CardTitle>
                   <CardDescription>
-                    Property deed, title, or ownership certificate
+                    Game concept, mechanics, and design specifications
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -261,13 +261,12 @@ export default function TokenizePage() {
               </Card>
 
               <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Calculator className="h-5 w-5" />
-                    Professional Valuation
+                <CardHeader>                <CardTitle className="flex items-center gap-2">
+                    <Gamepad2 className="h-5 w-5" />
+                    Technical Documentation
                   </CardTitle>
                   <CardDescription>
-                    Official appraisal from certified assessor
+                    Technical stack, architecture, and development roadmap
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -282,13 +281,12 @@ export default function TokenizePage() {
               </Card>
 
               <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Shield className="h-5 w-5" />
-                    Insurance Documentation
+                <CardHeader>                <CardTitle className="flex items-center gap-2">
+                    <Sword className="h-5 w-5" />
+                    Asset Documentation
                   </CardTitle>
                   <CardDescription>
-                    Current insurance policy and coverage details
+                    In-game assets, artwork, and intellectual property rights
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -303,13 +301,12 @@ export default function TokenizePage() {
               </Card>
 
               <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Briefcase className="h-5 w-5" />
-                    Additional Documents
+                <CardHeader>                <CardTitle className="flex items-center gap-2">
+                    <Users className="h-5 w-5" />
+                    Team Documentation
                   </CardTitle>
                   <CardDescription>
-                    Any other relevant legal or financial documents
+                    Team members, experience, and previous projects
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -494,18 +491,25 @@ export default function TokenizePage() {
                 <CardHeader>
                   <CardTitle>Asset Information</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Name:</span>
-                    <span className="font-medium">{formData.assetName}</span>
+                <CardContent className="space-y-2">                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Project Name:</span>
+                    <span className="font-medium">{formData.projectName}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Type:</span>
                     <span className="font-medium">{ASSET_TYPES.find(t => t.id === formData.assetType)?.name}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Location:</span>
-                    <span className="font-medium">{formData.location}</span>
+                    <span className="text-muted-foreground">Studio:</span>
+                    <span className="font-medium">{formData.studio}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Genre:</span>
+                    <span className="font-medium">{formData.genre}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Platform:</span>
+                    <span className="font-medium">{formData.platform}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Total Value:</span>
@@ -581,11 +585,10 @@ export default function TokenizePage() {
       <Header />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* Header */}
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold">Asset Tokenization</h1>
+          {/* Header */}          <div className="text-center space-y-4">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Game Project Tokenization</h1>
             <p className="text-xl text-muted-foreground">
-              Transform your real world asset into tradeable tokens
+              Transform your gaming project into tradeable tokens
             </p>
           </div>
 

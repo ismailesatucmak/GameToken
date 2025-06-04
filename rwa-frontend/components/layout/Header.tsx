@@ -6,14 +6,16 @@ import { useWalletStore } from '@/stores/wallet';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
-  Building2, 
+  Gamepad2, 
   Wallet, 
   Network, 
   Settings, 
   LogOut,
   ExternalLink,
   Copy,
-  ChevronDown 
+  ChevronDown,
+  Trophy,
+  Sword
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -94,40 +96,38 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo and Navigation */}
-        <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-3">
-            <Building2 className="h-8 w-8 text-primary" />
+        <div className="flex items-center gap-8">          <Link href="/" className="flex items-center gap-3">
+            <Gamepad2 className="h-8 w-8 text-primary" />
             <div>
-              <h1 className="text-lg font-bold">RWA Investor</h1>
-              <p className="text-xs text-muted-foreground">Real World Assets</p>
+              <h1 className="text-lg font-bold">GameToken Market</h1>
+              <p className="text-xs text-muted-foreground">Gaming Assets & eSports</p>
             </div>
           </Link>
 
           {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-6">
-            <Link 
+          <nav className="hidden md:flex items-center gap-6">            <Link 
               href="/dashboard" 
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Dashboard
+              Gaming Hub
             </Link>
             <Link 
               href="/marketplace" 
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Marketplace
+              Game Assets
             </Link>
             <Link 
               href="/tokenize" 
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Tokenize
+              Create Token
             </Link>
             <Link 
               href="/transfer" 
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Transfer
+              Transfer Assets
             </Link>
           </nav>
         </div>

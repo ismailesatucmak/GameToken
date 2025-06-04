@@ -8,14 +8,16 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
-  Building2, 
+  Gamepad2,
   Coins, 
   TrendingUp, 
   Users,
   ArrowRight,
   CheckCircle,
   AlertCircle,
-  Clock
+  Clock,
+  Trophy,
+  Sword
 } from 'lucide-react';
 import { formatTokenAmount, formatCurrency, formatPercentage } from '@/lib/stellar';
 import Link from 'next/link';
@@ -51,49 +53,47 @@ export default function Dashboard() {
         <Header />
         <main className="container mx-auto px-4 py-8">
           <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] space-y-8">
-            <div className="text-center space-y-4 max-w-2xl">
-              <h1 className="text-4xl font-bold tracking-tight">
-                Real World Asset Investment Platform
+            <div className="text-center space-y-4 max-w-2xl">              <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                GameToken Creator Market
               </h1>
               <p className="text-xl text-muted-foreground">
-                Access tokenized real estate, commodities, and other physical assets 
-                through compliant blockchain technology on Stellar.
+                Tokenize and invest in game studios, in-game assets, and eSports teams 
+                through blockchain technology on Stellar.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl">
-              <Card className="text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl">              <Card className="text-center">
                 <CardHeader>
-                  <Building2 className="h-12 w-12 mx-auto text-primary" />
-                  <CardTitle className="text-lg">Tokenized Assets</CardTitle>
+                  <Gamepad2 className="h-12 w-12 mx-auto text-primary" />
+                  <CardTitle className="text-lg">Game Projects</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    Invest in premium real estate and other assets through blockchain tokens
+                    Invest in promising game studios and their upcoming projects
                   </p>
                 </CardContent>
               </Card>
               
               <Card className="text-center">
                 <CardHeader>
-                  <CheckCircle className="h-12 w-12 mx-auto text-green-600" />
-                  <CardTitle className="text-lg">Compliant</CardTitle>
+                  <Trophy className="h-12 w-12 mx-auto text-secondary" />
+                  <CardTitle className="text-lg">eSports Teams</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    KYC verification and regulatory compliance built into every transaction
+                    Own shares in professional gaming teams and tournaments
                   </p>
                 </CardContent>
               </Card>
               
               <Card className="text-center">
                 <CardHeader>
-                  <TrendingUp className="h-12 w-12 mx-auto text-blue-600" />
-                  <CardTitle className="text-lg">High Yield</CardTitle>
+                  <Sword className="h-12 w-12 mx-auto text-accent" />
+                  <CardTitle className="text-lg">In-Game Assets</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    Earn passive income through rental yields and asset appreciation
+                    Trade exclusive in-game items and virtual assets
                   </p>
                 </CardContent>
               </Card>
@@ -110,19 +110,17 @@ export default function Dashboard() {
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
           {/* Welcome Section */}
-          <div className="space-y-4">
-            <h1 className="text-3xl font-bold">Welcome to RWA Investor</h1>
+          <div className="space-y-4">            <h1 className="text-3xl font-bold">Welcome to GameToken Market</h1>
             <p className="text-lg text-muted-foreground">
-              Your gateway to tokenized real world assets
+              Your gateway to gaming and eSports investments
             </p>
           </div>
 
           {/* Portfolio Overview Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Your Holdings</CardTitle>
-                <Building2 className="h-4 w-4 text-muted-foreground" />
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">                <CardTitle className="text-sm font-medium">Your Gaming Portfolio</CardTitle>
+                <Gamepad2 className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">

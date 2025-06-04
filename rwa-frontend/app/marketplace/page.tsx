@@ -8,9 +8,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { 
-  Building2, 
-  MapPin, 
-  TrendingUp, 
+  Gamepad2,
+  Trophy,
+  Sword,
   Users,
   Filter,
   Search,
@@ -20,35 +20,40 @@ import {
   Coins,
   Shield,
   Clock,
-  DollarSign
+  DollarSign,
+  TrendingUp,
+  MapPin,
+  Rocket,
+  Target
 } from 'lucide-react';
 import { formatCurrency, formatPercentage } from '@/lib/stellar';
 import Link from 'next/link';
+
+type AssetStatus = 'live' | 'upcoming' | 'sold_out';
 
 // Mock marketplace data
 const marketplaceAssets = [
   {
     id: '1',
-    name: 'Luxury Apartment NYC',
-    location: 'Manhattan, New York',
-    type: 'real_estate',
-    description: 'Premium apartment in Manhattan with high rental yield',
-    totalValue: '2500000',
+    name: 'CyberQuest RPG',
+    location: 'San Francisco, USA',
+    type: 'game_project',
+    description: 'Next-gen MMORPG with blockchain integration and stunning visuals',
+    totalValue: '5000000',
     availableTokens: '1000000',
-    pricePerToken: '2.50',
-    projectedYield: '8.5',
-    riskLevel: 'low' as const,
-    status: 'live' as const,
+    pricePerToken: '5.00',
+    projectedYield: '12.5',
+    riskLevel: 'medium' as const,
+    status: 'live' as AssetStatus,
     images: ['/api/placeholder/400/300'],
-    launchDate: Date.now() - 86400000,
-    investors: 45,
+    launchDate: Date.now() + 7776000000, // 90 days in future
+    investors: 250,
     contractId: 'CBQAAC4EHNMMHEI2W3QU6UQ5N4KSVYRLVTB5M2XMARCNS4CNLWMX3VQ6'
   },
-  {
-    id: '2',
-    name: 'Downtown Office Building',
-    location: 'Chicago, Illinois',
-    type: 'real_estate',
+  {    id: '2',
+    name: 'Team Ethereal',
+    location: 'Seoul, South Korea',
+    type: 'esports_team',
     description: 'Class A commercial office space in downtown Chicago',
     totalValue: '5000000',
     availableTokens: '2000000',
@@ -60,35 +65,33 @@ const marketplaceAssets = [
     launchDate: Date.now() + 2592000000, // 30 days from now
     investors: 0,
     contractId: null
-  },
-  {
+  },  {
     id: '3',
-    name: 'Gold Storage Facility',
-    location: 'Delaware, USA',
-    type: 'commodities',
-    description: 'Secure precious metals storage and trading facility',
+    name: 'MetaVerse Champions',
+    location: 'Tokyo, Japan',
+    type: 'in_game_asset',
+    description: 'Premium NFT collection for the MetaVerse Champions game with unique character skins and items',
     totalValue: '3000000',
     availableTokens: '1500000',
     pricePerToken: '2.00',
-    projectedYield: '6.8',
-    riskLevel: 'low' as const,
+    projectedYield: '15.8',
+    riskLevel: 'medium' as const,
     status: 'upcoming' as const,
     images: ['/api/placeholder/400/300'],
     launchDate: Date.now() + 5184000000, // 60 days from now
     investors: 0,
     contractId: null
-  },
-  {
+  },  {
     id: '4',
-    name: 'Renewable Energy Farm',
-    location: 'Texas, USA',
-    type: 'infrastructure',
-    description: 'Solar energy farm with long-term government contracts',
+    name: 'Virtual City Blocks',
+    location: 'Decentraland',
+    type: 'virtual_land',
+    description: 'Prime virtual real estate in the Decentraland metaverse, perfect for gaming venues and esports arenas',
     totalValue: '8000000',
     availableTokens: '4000000',
     pricePerToken: '2.00',
-    projectedYield: '7.5',
-    riskLevel: 'medium' as const,
+    projectedYield: '18.5',
+    riskLevel: 'high' as const,
     status: 'upcoming' as const,
     images: ['/api/placeholder/400/300'],
     launchDate: Date.now() + 7776000000, // 90 days from now
@@ -102,15 +105,13 @@ export default function MarketplacePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
-
   const assetTypes = [
     { value: 'all', label: 'All Assets' },
-    { value: 'real_estate', label: 'Real Estate' },
-    { value: 'commodities', label: 'Commodities' },
-    { value: 'infrastructure', label: 'Infrastructure' }
-  ];
-
-  const statusTypes = [
+    { value: 'game_project', label: 'Game Projects' },
+    { value: 'esports_team', label: 'eSports Teams' },
+    { value: 'in_game_asset', label: 'In-Game Assets' },
+    { value: 'virtual_land', label: 'Virtual Land' }
+  ];  const statusTypes = [
     { value: 'all', label: 'All Status' },
     { value: 'live', label: 'Live' },
     { value: 'upcoming', label: 'Upcoming' },
@@ -158,10 +159,9 @@ export default function MarketplacePage() {
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
           {/* Page Header */}
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold">Asset Marketplace</h1>
+          <div className="space-y-4">            <h1 className="text-4xl font-bold">Gaming Asset Marketplace</h1>
             <p className="text-xl text-muted-foreground">
-              Discover tokenized real world assets and start investing today
+              Discover and invest in game projects, eSports teams, and virtual assets
             </p>
           </div>
 
@@ -170,7 +170,7 @@ export default function MarketplacePage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Assets</CardTitle>
-                <Building2 className="h-4 w-4 text-muted-foreground" />
+                <Gamepad2 className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{marketplaceAssets.length}</div>
@@ -375,9 +375,8 @@ export default function MarketplacePage() {
           {/* Call to Action */}
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4">Ready to Start Investing?</h2>
-              <p className="text-lg opacity-90 mb-6">
-                Join hundreds of investors building wealth through tokenized real world assets
+              <h2 className="text-2xl font-bold mb-4">Ready to Start Investing?</h2>              <p className="text-lg opacity-90 mb-6">
+                Join the future of gaming investment through tokenized game assets and eSports teams
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 {!isConnected ? (
@@ -395,7 +394,7 @@ export default function MarketplacePage() {
                     </Button>
                     <Button size="lg" variant="secondary" asChild>
                       <Link href="/tokenize">
-                        <Building2 className="h-5 w-5 mr-2" />
+                        <Gamepad2 className="h-5 w-5 mr-2" />
                         Tokenize Asset
                       </Link>
                     </Button>
@@ -408,4 +407,4 @@ export default function MarketplacePage() {
       </main>
     </div>
   );
-} 
+}

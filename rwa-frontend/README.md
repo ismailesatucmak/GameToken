@@ -2,6 +2,8 @@
 
 A professional Next.js application for investing in Real World Asset (RWA) tokens on the Stellar blockchain. This platform enables investors to access tokenized real estate, commodities, and other physical assets through compliant blockchain technology.
 
+Latest Contract ID: `CB5SPIUDHKAHPUUGBJ3SKDSS2ID443LTICPQ2VCHW6PR3PJDMJVH4ZBC` (Testnet)
+
 ## 🎯 Features
 
 ### **Core Functionality (Phase 1 - Completed)**

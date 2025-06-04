@@ -23,7 +23,7 @@ export const NETWORKS: Record<'testnet' | 'mainnet', NetworkConfig> = {
 export const DEFAULT_NETWORK: 'testnet' | 'mainnet' = 'testnet';
 
 // Your deployed RWA contract ID
-export const RWA_CONTRACT_ID = 'CBQAAC4EHNMMHEI2W3QU6UQ5N4KSVYRLVTB5M2XMARCNS4CNLWMX3VQ6';
+export const RWA_CONTRACT_ID = 'CB5SPIUDHKAHPUUGBJ3SKDSS2ID443LTICPQ2VCHW6PR3PJDMJVH4ZBC';
 
 // Create Soroban RPC server instance
 export const createSorobanServer = (network: 'testnet' | 'mainnet' = DEFAULT_NETWORK) => {
@@ -254,4 +254,4 @@ export const parseContractError = (error: any): string => {
   }
   
   return 'Unknown error occurred';
-}; 
+};
