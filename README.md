@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # GameToken Creator Market Smart Contract
 
 A Rust-based smart contract for Gaming Asset (GameToken) tokenization on the Stellar blockchain. This contract enables game studios, developers, and eSports organizations to tokenize their projects, in-game assets, and teams while ensuring regulatory compliance and professional asset management.
