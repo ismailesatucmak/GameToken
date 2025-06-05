@@ -307,5 +307,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ⚡ Powered by Nova Games Collective | Last Updated: June 2025
 =======
-# noNameCoin
->>>>>>> origin/main
